@@ -30,7 +30,7 @@ Why is this app useful? This simplicity of this app will immediately cater to th
 * Wireframes to show the map with the point of interest pins with the results under it.
 
 ## Working Prototype
-You can access a working prototype of the app here: https://commute-calculator-capstone.herokuapp.com/ 
+You can access a working prototype of the app here: https://jebbyblah007.github.io/night-owl-api-capstone/
 
 ## Functionality
 The app's functionality includes:
