@@ -95,25 +95,26 @@ function createMarker(title, lat, lng) {
 //getFoursquareApi("", "", "Chicago, IL - replace with search query");
 
 function getFoursquareApi(latitude, longitude, near) {
-    //if city is not defined...
+    //if city is undefined...
     if (near == "") {
-        //check if latitude is defined...
+        //check if latitude is undefined...
         if ((latitude == "") || (latitude == undefined)) {
-            //if not, use default NYC coordinates
+            //use default NYC coordinates
             latitude = "40.730610"
         }
-        //check if longitude is defined
+        //check if longitude is undefined
         if ((longitude == "") || (longitude == undefined)) {
-            //if not, use default NYC coordinates
+            //use default NYC coordinates
             longitude = "-73.935242"
         }
-        //with latitude and longitude coordinates defined, send to foursquare API
+        //if latitude and longitude are defined, send to foursquare API
         var params = {
-            //near: 'Chicago, IL',
             ll: latitude + "," + longitude,
             client_id: "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV",
             client_secret: "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV",
-            v: '20180418'
+            v: '20180418',
+            categoryId: '4d4b7105d754a06374d81259',
+            limit: 50
         };
     }
     //if city is defined...
@@ -121,7 +122,6 @@ function getFoursquareApi(latitude, longitude, near) {
         //send it to foursquare API
         var params = {
             near: near,
-            //ll: latitude + "," + longitude,
             client_id: "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV",
             client_secret: "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV",
             v: '20180418'
@@ -137,41 +137,68 @@ function getFoursquareApi(latitude, longitude, near) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (allVenuesResults) {
-            //            console.log(allVenuesResults);
-            /* if the results are meaningful, we can just console.log them */
-            // console.log(result);
+            /* if the results are meaningful*/
+            console.log('allVenuesResults', allVenuesResults);
             // console.log(result.response.venues[0].id);
-            // loop through all the venues' ids
-            $.each(allVenuesResults.response.venues, function (venuesArrayKey, venuesArrayValue) {
+            // loop through all the venues
+            $.each(allVenuesResults.response.venues, function (key, venue) {
                 //                console.log(venuesArrayValue.id);
                 /* Get venue details by venue id*/
                 var params = {
                     client_id: "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV",
                     client_secret: "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV",
                     v: '20180418'
-
                 };
                 var result = $.ajax({
                         /* update API end point */
-                        url: "https://api.foursquare.com/v2/venues/" + venuesArrayValue.id + "/hours",
+                        url: "https://api.foursquare.com/v2/venues/" + venue.id + "/hours",
                         data: params,
                         dataType: "jsonp",
                         /*set the call type GET / POST*/
                         type: "GET"
                     })
                     /* if the call is successful (status 200 OK) show results */
-                    .done(function (oneVenueResult) {
+                    .done(function (hours) {
                         /* if the results are meeningful, we can just console.log them */
-                        console.log(oneVenueResult);
-                        console.log(oneVenueResult.response.hours);
-                        console.log(Object.keys(oneVenueResult.response.hours).length);
+                        console.log("hours", hours);
+                        venue.hours = hours;
+                        //                        console.log(oneVenueResult.response.hours);
+                        //                        console.log(Object.keys(oneVenueResult.response.hours).length);
                         //if hours are not specified...
-                        if (Object.keys(oneVenueResult.response.hours).length === 0) {
+                        if (Object.keys(hours.response.hours).length === 0) {
                             //display error
                             console.log("Error");
                         } else { //display timeframes
-                            console.log(oneVenueResult.response.hours.timeframes);
+                            console.log(hours.response.popular.timeframes);
+                            //                            console.log(hours.response.popular.timeframes[0].open[0].start);
+                            //                            console.log(hours.response.popular.timeframes[0].open[0].end);
+                            var d = new Date();
+                            var h = d.getHours();
+                            var m = d.getMinutes();
+                            var currentTime = '' + h + m;
+                            console.log(currentTime);
+
+                            if (
+                                (
+                                    (currentTime < '2400') &&
+                                    (currentTime > hours.response.popular.timeframes[0].open[0].end)
+                                ) ||
+                                (
+                                    (currentTime > '0000') &&
+                                    (currentTime < hours.response.popular.timeframes[0].open[0].start)
+                                )
+                            ) {
+                                console.log("Open Now");
+                            } else {
+                                console.log("Closed");
+                            }
+
                         }
+
+                        // Check if this place is open
+                        // If it's open, display it
+                        // if it's not, do nothing
+
                     })
                     /* if the call is NOT successful show errors */
                     .fail(function (jqXHR, error, errorThrown) {
@@ -180,6 +207,7 @@ function getFoursquareApi(latitude, longitude, near) {
                         console.log(errorThrown);
                     });
             });
+            console.log()
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
@@ -191,7 +219,6 @@ function getFoursquareApi(latitude, longitude, near) {
 
 function geoFindMe() {
     var output = document.getElementById("out");
-
     if (!navigator.geolocation) {
         output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
         getFoursquareApi("", "", "");
@@ -228,4 +255,5 @@ return data.events; [ { title: , location: , time: , descr: , }, { title: , loca
 const coordinates = getCoordinates();
 
 getEvents(coordinates);*/
+
 //ask how to create if else to filter hours//
