@@ -54,8 +54,6 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: url(cool owl.jpg) no-repeat center center fixed;
-    background-size: cover;
 }
 
 
@@ -138,9 +136,9 @@ body {
 }
 
 .start-section {
-    border-radius: 12px;
+    border-radius: 20px;
     border: none;
-    font-size: 20px;
+    font-size: 28px;
     font-family: 'Nanum Brush Script';
     color: black;
 }
@@ -195,6 +193,43 @@ nav li {
     position: relative;
 }
 
+.col-3,
+.result {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 30px;
+    background-color: black;
+    border-radius: 15px;
+    margin-top: 10px;
+    box-shadow: 5px 5px 5px 5px #a3c2c2;
+    position: relative;
+    display: inline-block;
+}
+
+
+.result-description {
+    padding: 10px;
+    text-align: justify;
+    overflow: hidden;
+    font-size: 0.9em;
+}
+
+#foursquare-results {
+    height: 300px;
+    color: aliceblue;
+    text-align: center;
+
+}
+
+#foursquare-results span {
+    display: inline-block;
+    height: 32px;
+    padding: 5px;
+    vertical-align: top;
+    background-color: black;
+    border-radius: 5px;
+}
+
 /*.results-box {
     margin: 0 auto;
     max-width: 300px;
@@ -206,18 +241,6 @@ nav li {
     position: relative;
 }
 */
-
-div ul {
-    color: white;
-    font-size: 20px;
-}
-
-.js-search-results {
-    color: white;
-    font-size: 20px;
-}
-
-
 
 /* -------------------------------------
 Footer styles (Main Module)
