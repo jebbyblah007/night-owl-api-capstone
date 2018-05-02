@@ -200,7 +200,7 @@ nav li {
     padding: 30px;
     background-color: black;
     border-radius: 15px;
-    margin-top: 10px;
+    margin-top: 100px;
     box-shadow: 5px 5px 5px 5px #a3c2c2;
     position: relative;
     display: inline-block;
@@ -230,17 +230,6 @@ nav li {
     border-radius: 5px;
 }
 
-/*.results-box {
-    margin: 0 auto;
-    max-width: 300px;
-    padding: 30px;
-    background-color: black;
-    border-radius: 15px;
-    margin-top: 10px;
-    box-shadow: 5px 5px 5px 5px #a3c2c2;
-    position: relative;
-}
-*/
 
 /* -------------------------------------
 Footer styles (Main Module)
