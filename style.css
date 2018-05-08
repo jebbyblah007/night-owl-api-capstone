@@ -141,7 +141,9 @@ body {
 
 .thumb {
 
-    width: 800px;
+    width: 100%;
+
+    max-width: 800px;
 
     height: 400px;
 
@@ -182,7 +184,7 @@ body {
 
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/cool-owl.jpg");
 
-    background-size: 0, cover;
+    background-size: cover;
 
     background-repeat: no-repeat;
 
@@ -193,6 +195,8 @@ body {
     transition: all 0.5s;
 
     position: absolute;
+
+    background-position: center center;
 
 }
 
@@ -275,6 +279,14 @@ body {
     font-family: 'Dosis', sans-serif;
 
     color: black;
+
+}
+
+.start-section button {
+
+    font-size: 20px;
+
+    padding: 0.25rem 1rem;
 
 }
 
@@ -380,31 +392,30 @@ nav button {
 .result {
 
     margin: 0 auto;
-
     max-width: 600px;
-
     padding: 30px;
-
     background-color: black;
-
     border-radius: 15px;
-
     margin-top: 15px;
-
-    box-shadow: 5px 5px 5px 5px #a3c2c2;
-
+    box-shadow: 1px 1px 8px 5px #a3c2c2;
     position: relative;
-
     display: inline-block;
-
     height: 250px;
-
     overflow-y: auto;
+    border: 1px solid white;
 
 }
 
 
+.result .icon {
 
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 10px;
+
+}
 
 
 .result-description {

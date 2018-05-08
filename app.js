@@ -69,9 +69,9 @@ function displayResults(result) {
     return `
 <div class="result ${result.categories[0].name} col-3">
 <h2 class="result-name"><a href="${result.url}" target="_blank">${result.name}</a></h2>
-<span class="icon">
+<div class="icon">
 <img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
-</span>
+</div>
 <span class="icon-text">
 ${result.categories[0].name}
 </span>
@@ -104,8 +104,10 @@ $(document).on('click', '#showCoffee', function (event) {
 });
 $(document).on('click', '#goBack', function (event) {
     event.preventDefault();
-    $('.start-section').show();
-    $('.result').hide();
-    $('.container').hide();
+    location.reload();
+});
+$(document).on('click', '#showOpen', function (event) {
+    event.preventDefault();
+    $('.result').show();
 });
 
