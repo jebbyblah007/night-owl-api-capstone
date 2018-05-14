@@ -434,8 +434,6 @@ nav button {
 
 #foursquare-results {
 
-    height: 300px;
-
     color: aliceblue;
 
     text-align: center;
@@ -450,7 +448,7 @@ nav button {
 
     display: inline-block;
 
-    height: 32px;
+
 
     padding: 5px;
 
@@ -462,7 +460,7 @@ nav button {
 
 }
 
-.result-name a {
+.result-name {
 
     color: aqua;
 

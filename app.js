@@ -1,4 +1,11 @@
 "use strict";
+//old
+//let currentClientID = "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV";
+//let currentClientSecret = "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV";
+
+//new
+let currentClientID = "DLSSGTGP1QJUSSZREI54AVLBKRP31PQYVMKSEORODLUQF5B3";
+let currentClientSecret = "FD3F1GRHIIRW21HJD14VVCPVBBAMRON4LKMY3FLFEHMVTGK3";
 
 function startHere() {
     $(document).ready(function () {
@@ -7,7 +14,10 @@ function startHere() {
     })
 }
 startHere();
-const FOURSQUARE_SEARCH_URL = "https://api.foursquare.com/v2/venues/search?&client_id=0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV&client_secret=XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV&v=20180418"
+const FOURSQUARE_SEARCH_URL = "https://api.foursquare.com/v2/venues/search?&client_id=" + currentClientID + "&client_secret=" + currentClientSecret + "&v=20180505";
+
+
+
 
 //get current location
 function geoFindMe() {
@@ -43,7 +53,7 @@ function getFoursquareApi(latitude, longitude) {
         data: {
             ll: latitude + "," + longitude,
             categoryId: '4d4b7105d754a06376d81259',
-            limit: 50,
+            limit: 25,
             radius: 8047,
         },
         dataType: 'json',
@@ -51,9 +61,8 @@ function getFoursquareApi(latitude, longitude) {
         success: function (data) {
             console.log(data);
             let results = data.response.venues.map(function (item, index) {
-                //console.log(item);
-                getHours(item.id, item.name);
-                return displayResults(item);
+                console.log(item);
+                getHours(item, item.id, item.name);
 
             });
             $('#foursquare-results').html(results);
@@ -66,7 +75,7 @@ function getFoursquareApi(latitude, longitude) {
 }
 
 
-function getHours(venueId, venueName) {
+function getHours(result, venueId, venueName) {
     var d = new Date();
     var day = d.getDay();
     var hour = d.getHours().toString();
@@ -77,51 +86,73 @@ function getHours(venueId, venueName) {
     minute = minute.length === 1 ? `0${minute}` : minute;
     //hourMinute is combination of both
     var hourMinute = hour + minute;
-    console.log(hourMinute);
-    $.ajax(`https://api.foursquare.com/v2/venues/${venueId}/hours?&client_id=0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV&client_secret=XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV&v=20180418`, {
+    console.log(hourMinute, day);
+
+
+
+    $.ajax("https://api.foursquare.com/v2/venues/" + venueId + "/hours?&client_id=" + currentClientID + "&client_secret=" + currentClientSecret + "&v=20180505", {
         dataType: 'json',
         type: 'GET',
         success: function (data) {
             console.log(data, venueName);
-
-
-
-            /*console.log(hours.response.popular.timeframes);
-            //                            console.log(hours.response.popular.timeframes[0].open[0].start);
-            //                            console.log(hours.response.popular.timeframes[0].open[0].end);
-            var d = new Date();
-            var h = d.getHours();
-            var m = d.getMinutes();
-            var currentTime = '' + h + m;
-            console.log(currentTime);*/
-
-
-
-
-
-
-
+            let currentVenueName = "";
+            let oldVenueName = "";
             if (data.response.hours.timeframes) {
-                var timeframe = data.response.hours.timeframes.filter(timeframe => timeframe.days.includes(day));
-                console.log(timeframe);
-                for (var i = 0; i < timeframe.length; i++) {
-                    var start = timeframe[i].open[0].start;
-                    var end = timeframe[i].open[0].end;
-                    console.log(start + ' ' + end);
-                    if (
-                        (
-                            (hourMinute < '2400') &&
-                            (hourMinute > start)
-                        ) ||
-                        (
-                            (hourMinute < '0000') &&
-                            (hourMinute > end)
-                        )
-                    ) {
-                        console.log("Open Now");
+                for (var i = 0; i < data.response.hours.timeframes.length; i++) {
+
+                    currentVenueName = result.categories[0].name;
+                    //console.log(data.response.hours.timeframes[i]);
+                    var start = data.response.hours.timeframes[i].open[0].start;
+                    var end = data.response.hours.timeframes[i].open[0].end;
+
+                    //console.log(start, end, hourMinute);
+                    //only show results if the current day matches the scheduled one
+                    var includesToday = data.response.hours.timeframes[i].includesToday;
+                    console.log(includesToday);
+                    if ((includesToday != undefined) && (includesToday != null) && (includesToday != "") && (includesToday == true)) {
+
+                        //check for current hour
+                        if (
+                            (
+                                (hourMinute < '2400') &&
+                                (hourMinute > start)
+                            ) ||
+                            (
+                                (hourMinute < '0000') &&
+                                (hourMinute > end)
+                            )
+                        ) {
+                            console.log("Open Now");
+
+
+                            let htmlOutput = `
+                                <div class="result ${result.categories[0].name} col-3">
+                                <h2 class="result-name">${result.name}</h2>
+                                <div class="icon">
+                                <img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
+                                </div>
+                                <span class="icon-text">
+                                ${result.categories[0].name}
+                                </span>
+                                <p class="result-address">${result.location.formattedAddress[0]}</p>
+                                <p class="result-address">${result.location.formattedAddress[1]}</p>
+                                <p class="result-address">${result.location.formattedAddress[2]}</p>
+
+                                </div>
+                                </div>
+                                `;
+                            if (currentVenueName != oldVenueName) {
+                                $('#foursquare-results').append(htmlOutput);
+
+                            }
+                        }
+
+
+
                     } else {
                         console.log("Closed");
                     }
+                    currentVenueName = oldVenueName;
                 }
             }
 
@@ -132,23 +163,30 @@ function getHours(venueId, venueName) {
     })
 }
 
-function displayResults(result) {
-    return `
-<div class="result ${result.categories[0].name} col-3">
-<h2 class="result-name"><a href="${result.url}" target="_blank">${result.name}</a></h2>
-<div class="icon">
-<img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
-</div>
-<span class="icon-text">
-${result.categories[0].name}
-</span>
-<p class="result-address">${result.location.formattedAddress[0]}</p>
-<p class="result-address">${result.location.formattedAddress[1]}</p>
-<p class="result-address">${result.location.formattedAddress[2]}</p>
-</div>
-</div>
-`;
-}
+//function displayResults(result, start, end) {
+//    console.log(result);
+//
+//    let currentVenueName = "";
+//
+//    let htmlOutput = `
+//<div class="result ${result.categories[0].name} col-3">
+//<h2 class="result-name"><a href="${result.url}" target="_blank">${result.name}</a></h2>
+//<div class="icon">
+//<img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
+//</div>
+//<span class="icon-text">
+//${result.categories[0].name}
+//</span>
+//<p class="result-address">${result.location.formattedAddress[0]}</p>
+//<p class="result-address">${result.location.formattedAddress[1]}</p>
+//<p class="result-address">${result.location.formattedAddress[2]}</p>
+//<p class="result-address">Opened ${start} till ${end} </p>
+//</div>
+//</div>
+//`;
+//
+//    $('#foursquare-results').append(htmlOutput);
+//}
 $(document).on('click', '#showFood', function (event) {
     event.preventDefault();
     $('.result').hide();
