@@ -1,27 +1,26 @@
 # night-owl-api-capstone
 Night Owl is a simple app that allows users to find nightlife spots - whether it's a bar, a restaurant, or a coffee shop - that are currently open near them.
 
-![Landing page top Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/landing-page-top.png)
-![Landing page bottom Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/landing-page-bottom.png)
-![Sign-in Page Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/sign-in-page.png)
-![User page top Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/user-page-top.png)
-![User page bottom Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/user-page-bottom.png)
+![Landing page Screenshot](images/landing-page1.png)
+![Landing page loading Screenshot](images/landing-page1.png)
+![User page Screenshot1](images/sample-results-food.png)
+![User page Screenshot2](images/sample-results-bar.png)
 
 ## Use Case
-Why is this app useful? This simplicity of this app will immediately cater to the needs of anyone hungry in the wee hours of the night.
+Why is this app useful? This simplicity of this app will immediately cater to the needs of anyone looking for a bar, a restaruant, or a coffee shop that is open late at night.
 
 ## User-stories
 
-##### Find places near me/Find places by zip code.
+##### Find places near me.
 * As a user I should be able to understand the purpose of the app based off the landing page to use the app.
-* As a user, I should be able to allow or deny the computer to know my location or enter my zip code in order to search cafes and restaurants near me.
-* As a user I should be able to see the place’s details including its name, opening hours, miles away, rating, photos, and link to the place’s website.
+* As a user, I should be able to allow or deny the computer to know my location in order to search cafes and restaurants near me.
+* As a user I should be able to see the place’s details including its name, category, and address.
 * As a user I should be able to return to the landing page to start a new search.
 
 ##### Screen Inventory
-* Landing page with 2 options
-* Map with icons
-* Info window to display place’s details
+* Landing page with a button to start the search
+* Results page with 4 icons (back button, bars button, restaurants button, and coffee shops button)
+* Results presented in cells
 
 ##### Wireframes
 * Wireframe to understand purpose.
@@ -35,8 +34,9 @@ You can access a working prototype of the app here: https://jebbyblah007.github.
 ## Functionality
 The app's functionality includes:
 
-* Landing page that includes three buttons – one to search places near the user’s location, one to search places near a specific zip code, and another option to search for late night restaurants and cafes.
+* Landing page that includes a button to search nearby places that are currently open.
 * An arrow button that will take the user back to the landing page.
+* Three buttons to click on depending on what specific category a user is looking for.
 
 
 ## Technical
@@ -45,4 +45,4 @@ The app is built with HTML, CSS, JavaScript, and jQuery. It has been built to be
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
 
-* Add clickable icons feature.
+* Add a map.
