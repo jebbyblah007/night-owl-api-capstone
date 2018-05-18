@@ -1,11 +1,11 @@
 "use strict";
 //old
-//let currentClientID = "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV";
-//let currentClientSecret = "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV";
+let currentClientID = "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV";
+let currentClientSecret = "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV";
 
 //new
-let currentClientID = "DLSSGTGP1QJUSSZREI54AVLBKRP31PQYVMKSEORODLUQF5B3";
-let currentClientSecret = "FD3F1GRHIIRW21HJD14VVCPVBBAMRON4LKMY3FLFEHMVTGK3";
+//let currentClientID = "DLSSGTGP1QJUSSZREI54AVLBKRP31PQYVMKSEORODLUQF5B3";
+//let currentClientSecret = "FD3F1GRHIIRW21HJD14VVCPVBBAMRON4LKMY3FLFEHMVTGK3";
 
 function startHere() {
     $(document).ready(function () {
@@ -128,21 +128,20 @@ function getHours(result, venueId, venueName) {
 
 
                             let htmlOutput = `
-                                <div class="result ${result.categories[0].name} col-3">
-                                <h2 class="result-name">${result.name}</h2>
-                                <div class="icon">
-                                <img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
-                                </div>
-                                <span class="icon-text">
-                                ${result.categories[0].name}
-                                </span>
-                                <p class="result-address">${result.location.formattedAddress[0]}</p>
-                                <p class="result-address">${result.location.formattedAddress[1]}</p>
-                                <p class="result-address">${result.location.formattedAddress[2]}</p>
-
-                                </div>
-                                </div>
-                                `;
+<div class="result ${result.categories[0].name} col-3">
+<h2 class="result-name">${result.name}</h2>
+<div class="icon">
+<img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
+</div>
+<span class="icon-text">
+${result.categories[0].name}
+</span>
+<p class="result-address">${result.location.formattedAddress[0]}</p>
+<p class="result-address">${result.location.formattedAddress[1]}</p>
+<p class="result-address">${result.location.formattedAddress[2]}</p>
+</div>
+</div>
+`;
                             if (currentVenueName != oldVenueName) {
                                 $('#foursquare-results').append(htmlOutput);
 

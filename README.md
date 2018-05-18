@@ -18,12 +18,13 @@ Why is this app useful? This simplicity of this app will immediately cater to th
 * As a user I should be able to return to the landing page to start a new search.
 
 ##### Screen Inventory
-* Landing page with a button to start the search
-* Results page with 4 icons (back button, bars button, restaurants button, and coffee shops button)
-* Results presented in cells
+* Landing page with a button to start the search.
+* Results page with 5 icons (back button, open button, bars button, restaurants button, and coffee shops button).
+* Results presented in cells.
 
 ##### Wireframes
-* Wireframe to understand purpose.
+* Wireframe to understand the web app's purpose.
+* Wireframe to show results.
 
 ## Working Prototype
 You can access a working prototype of the app here: https://jebbyblah007.github.io/night-owl-api-capstone/

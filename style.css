@@ -86,11 +86,8 @@
 
 
 /* -------------------------------------
-
 General styles (General Module, wrapping around the modules below)
-
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules below (h2, h3, h4, h5, h6, p, a, ul, li))
-
 */
 
 html,
@@ -110,19 +107,13 @@ body {
 
 
 /* -------------------------------------
-
 Header styles (Main Module)
-
 (all the styles inside the < header > or < nav > tags)
-
 */
 
 /* -------------------------------------
-
 Content styles (Main Module)
-
 (all the styles inside the < sections > or < aside > tags)
-
 */
 
 body {
@@ -297,8 +288,7 @@ body {
     color: white;
 
     /*cursor: wait;
-
-background-blend-mode: lighten;*/
+    background-blend-mode: lighten;*/
 }
 
 
@@ -486,21 +476,13 @@ nav button {
 
 
 /* -------------------------------------
-
 Footer styles (Main Module)
-
 (all the styles inside the < footer > tag)
-
 */
 
 /* -------------------------------------
-
 place all the desktop styles above this line
-
 Responsive styles
-
 (the very last module in the CSS, contains all the media queries and it is dealing with the compatibility with mobiles and tablets)
-
 place all the mobile tables styles below this line
-
 */
