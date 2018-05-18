@@ -1,5 +1,5 @@
 # night-owl-api-capstone
-Night Owl is a simple app that would allow users to find cafes and restaurants that are open late at night, near them, or around a specific zip code.
+Night Owl is a simple app that allows users to find nightlife spots - whether it's a bar, a restaurant, or a coffee shop - that are currently open near them.
 
 ![Landing page top Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/landing-page-top.png)
 ![Landing page bottom Screenshot](https://github.com/LeahBorns/commute-calculator-final-capstone-react/blob/master/wire-frame-images/landing-page-bottom.png)

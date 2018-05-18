@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Night Owl</title>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|IM+Fell+DW+Pica" rel="stylesheet">
-        <link href="grid.css" rel="stylesheet" type="text/css" />
-        <link href="style.css" rel="stylesheet" type="text/css" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
-        <!--nav bar-->
-        <nav role="navigation" class="container">
-            <button id="goBack"><img src="images/back.jpg" class="icon-img" alt="back"></button>
-            <button id="showOpen"><img src="images/open.jpg" class="icon-img" alt="open"></button>
-            <button id="showBars"><img src="images/bar.jpg" class="icon-img" alt="lounge"></button>
-            <button id="showFood"><img src="images/food.jpg" class="icon-img" alt="food"></button>
-            <button id="showCoffee"><img src="images/coffee.jpg" class="icon-img" alt="coffee"></button>
-        </nav> <!--end of nav bar-->
-        <!--landing page-->
-        <div class="thumb">
-            <section>Night Owl searches for nightlife spots near you <br> whether it's a bar, a restaurant, or a coffee shop.</section>
-            <a href="#">
-                <section class="start-section">
-                    <p><button onclick="geoFindMe()">Find places near me!</button></p>
-                    <div id="out"></div>
-                </section>
-            </a>
-        </div>
-        <!--end of landing page-->
+    <title>Night Owl</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|IM+Fell+DW+Pica" rel="stylesheet">
+    <link href="grid.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+</head>
 
-        <!--tab content from api calls-->
-        <div class="row" id="back"></div>
-        <div class="row" id="foursquare-results">
-        </div> <!--default is bars-->
-        <div class="row" id="food-results">
-        </div><!--food-->
-        <div class="row" id="coffee-results">
-        </div><!--coffee-->
+<body>
+    <!--nav bar-->
+    <nav role="navigation" class="container">
+        <button id="goBack"><img src="images/back.jpg" class="icon-img" alt="back"></button>
+        <button id="showOpen"><img src="images/open.jpg" class="icon-img" alt="open"></button>
+        <button id="showBars"><img src="images/bar.jpg" class="icon-img" alt="lounge"></button>
+        <button id="showFood"><img src="images/food.jpg" class="icon-img" alt="food"></button>
+        <button id="showCoffee"><img src="images/coffee.jpg" class="icon-img" alt="coffee"></button>
+
+    </nav>
+    <!--end of nav bar-->
+    <!--landing page-->
+    <div class="thumb">
+        <section>Night Owl searches for nightlife spots near you <br> whether it's a bar, a restaurant, or a coffee shop.</section>
+        <a href="#">
+            <section class="start-section">
+                <p><button onclick="geoFindMe()">Find places near me!</button></p>
+                <div id="out"></div>
+            </section>
+        </a>
+    </div>
+    <!--end of landing page-->
+
+    <!--tab content from api calls-->
+    <div class="row" id="back"></div>
+    <div class="row" id="foursquare-results">
+    </div>
+    <!--default is bars-->
+    <div class="row" id="food-results">
+    </div>
+    <!--food-->
+    <div class="row" id="coffee-results">
+    </div>
+    <!--coffee-->
     <!--end of tab content from api calls-->
 
     <!--<ul>
@@ -68,5 +74,5 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
-    </body>
+</body>
 </html>

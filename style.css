@@ -286,7 +286,21 @@ body {
 
     font-size: 20px;
 
-    padding: 0.25rem 1rem;
+    font-family: 'IM Fell DW Pica', serif;
+
+    padding: 0.50rem 1rem;
+
+    border-radius: 85%;
+
+    background-color: black;
+
+    color: white;
+
+    cursor: url(images/eyes.gif);
+
+}
+
+/*background-blend-mode: lighten;*/
 
 }
 
@@ -402,7 +416,6 @@ nav button {
     display: inline-block;
     height: 250px;
     overflow-y: auto;
-    border: 1px solid white;
 
 }
 

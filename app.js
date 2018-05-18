@@ -54,7 +54,9 @@ function getFoursquareApi(latitude, longitude) {
             ll: latitude + "," + longitude,
             categoryId: '4d4b7105d754a06376d81259',
             limit: 25,
-            radius: 8047,
+            //2 mile radius
+            radius: 3218,
+            //5 mile radius = 8047
         },
         dataType: 'json',
         type: 'GET',
