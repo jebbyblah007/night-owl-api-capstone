@@ -2,7 +2,7 @@
 Night Owl is a simple app that allows users to find nightlife spots - whether it's a bar, a restaurant, or a coffee shop - that are currently open near them.
 
 ![Landing page Screenshot](images/landing-page1.png)
-![Landing page loading Screenshot](images/landing-page1.png)
+![Landing page loading Screenshot](images/landing-page2.png)
 ![User page Screenshot1](images/sample-results-food.png)
 ![User page Screenshot2](images/sample-results-bar.png)
 
@@ -24,9 +24,6 @@ Why is this app useful? This simplicity of this app will immediately cater to th
 
 ##### Wireframes
 * Wireframe to understand purpose.
-![Purpose and Sign-up](https://github.com/LeahBorns/commute-calculator-final-capstone/blob/master/wire-frame-images/landing-signup-html-wireframe.png)
-* Wireframe to show the search forms including the “near me,” “zip code,” and “late night” options.
-* Wireframes to show the map with the point of interest pins with the results under it.
 
 ## Working Prototype
 You can access a working prototype of the app here: https://jebbyblah007.github.io/night-owl-api-capstone/
