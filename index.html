@@ -23,59 +23,25 @@
     </nav>
     <!--end of nav bar-->
     <!--landing page-->
-    <div class="thumb">
-        <section>Night Owl searches for nightlife spots near you <br> whether it's a bar, a restaurant, or a coffee shop.</section>
+    <section role="region" class="thumb" aria-live="polite">
+        <div>Night Owl searches for nightlife spots near you <br> whether it's a bar, a restaurant, or a coffee shop.</div>
         <a href="#">
-            <section class="start-section">
+            <section role="region" class="start-section" aria-live="polite">
                 <p><button onclick="geoFindMe()">Find places near me!</button></p>
                 <div id="out"></div>
             </section>
         </a>
-    </div>
+    </section>
     <!--end of landing page-->
 
     <!--tab content from api calls-->
-    <div class="row" id="back"></div>
-    <div class="row" id="foursquare-results">
-    </div>
-    <!--default is bars-->
-    <div class="row" id="food-results">
-    </div>
-    <!--food-->
-    <div class="row" id="coffee-results">
-    </div>
-    <!--coffee-->
+    <section role="region" class="row" id="back"></section>
+    <section role="region" class="row" id="foursquare-results"></section>
+    <section role="region" class="row" id="food-results"></section>
+    <section role="region" class="row" id="coffee-results"></section>
     <!--end of tab content from api calls-->
 
-    <!--<ul>
-<li>
-<a href="">
-<img src="images/back.jpg" class="icon-img" alt="back">
-</a>
-</li>
-<li>
-<a href="">
-<img src="images/food.jpg" class="icon-img" alt="food">
-</a>
-</li>
-<li>
-<a href="">
-<img src="images/lounge.jpg" class="icon-img" alt="lounge">
-</a>
-</li>
-<li>
-<a href="">
-<img src="images/coffee.jpg" class="icon-img" alt="coffee">
-</a>
-</li>
-</ul>
-</nav>-->
-
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7CdNeJFCn3bKGU-4mQq_5hJ4EI8nbs8">
-
-
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7CdNeJFCn3bKGU-4mQq_5hJ4EI8nbs8"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>

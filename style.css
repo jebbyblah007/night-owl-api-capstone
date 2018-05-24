@@ -149,7 +149,7 @@ body {
 
 
 
-.thumb section {
+.thumb div {
 
     color: white;
 
@@ -287,11 +287,16 @@ body {
 
     color: white;
 
-    /*cursor: wait;
-    background-blend-mode: lighten;*/
 }
 
+#out {
 
+    font-size: 20px;
+
+    font-family: 'IM Fell DW Pica', serif;
+
+    top: 200px;
+}
 
 .thumb a:before {
 
@@ -393,15 +398,24 @@ nav button {
 .result {
 
     margin: 0 auto;
-    max-width: 600px;
+
+    /*max-width: 600px;*/
     padding: 30px;
+
     background-color: black;
+
     border-radius: 15px;
+
     margin-top: 15px;
+
     box-shadow: 1px 1px 8px 5px #a3c2c2;
+
     position: relative;
+
     display: inline-block;
+
     height: 250px;
+
     overflow-y: auto;
 
 }

@@ -10,6 +10,7 @@
 }
 
 /* Clearfix */
+
 .row::before,
 .row::after {
     display: table;
@@ -20,7 +21,10 @@
     clear: both;
 }
 
-.col-3, .col-4, .col-6, .col-12 {
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
     float: left;
 
     /* Gutters:
@@ -34,13 +38,21 @@
 }
 
 /* Mobile defaults */
-.col-3, .col-4, .col-6, .col-12 {
-    width: 100%;
+
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 
 /* Non-mobile, grid */
-@media only screen and (min-width: 640px) {
+
+@media only screen and (min-width: 923px) {
     /* 3 columns, 3/12 in % */
     .col-3 {
         width: 25%;
