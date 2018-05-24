@@ -3,11 +3,9 @@
 //old
 let currentClientID = "0EFO1LZES0FQBZIXAEGMZNWXHHDAIZZCJ10LWFCHKIP4LWCV";
 let currentClientSecret = "XX4GIMFENPBMUTOMGCN1CI0JEG2IFGYSBTLUV3ASHBHQZNMV";
-
 //new
 //let currentClientID = "DLSSGTGP1QJUSSZREI54AVLBKRP31PQYVMKSEORODLUQF5B3";
 //let currentClientSecret = "FD3F1GRHIIRW21HJD14VVCPVBBAMRON4LKMY3FLFEHMVTGK3";
-
 const FOURSQUARE_SEARCH_URL = "https://api.foursquare.com/v2/venues/search?&client_id=" + currentClientID + "&client_secret=" + currentClientSecret + "&v=20180505";
 
 //get current location
@@ -41,7 +39,7 @@ function getFoursquareApi(latitude, longitude) {
         data: {
             ll: latitude + "," + longitude,
             categoryId: '4d4b7105d754a06376d81259',
-            limit: 10,
+            limit: 50,
             //2 mile radius
             radius: 3218,
             //5 mile radius = 8047
@@ -62,6 +60,7 @@ function getFoursquareApi(latitude, longitude) {
     });
 }
 
+//get current time
 function getHours(result, venueId, venueName) {
     var d = new Date();
     var day = d.getDay();
@@ -77,6 +76,7 @@ function getHours(result, venueId, venueName) {
     getVenueDetailsByVenueId(result, venueId, venueName, hourMinute);
 }
 
+//get venues' details that include start and end time using venue Id
 function getVenueDetailsByVenueId(result, venueId, venueName, hourMinute) {
     $.ajax("https://api.foursquare.com/v2/venues/" + venueId + "/hours?&client_id=" + currentClientID + "&client_secret=" + currentClientSecret + "&v=20180505", {
         dataType: 'json',
@@ -90,8 +90,8 @@ function getVenueDetailsByVenueId(result, venueId, venueName, hourMinute) {
     })
 }
 
+//display venues that are currently open
 function displayVenueDetailsByVenueId(result, data, venueName, hourMinute) {
-    //console.log(data, venueName);
     let currentVenueName = "";
     let oldVenueName = "";
     if (data.response.hours.timeframes) {
@@ -105,7 +105,7 @@ function displayVenueDetailsByVenueId(result, data, venueName, hourMinute) {
             var includesToday = data.response.hours.timeframes[i].includesToday;
             //console.log(includesToday);
             if ((includesToday != undefined) && (includesToday != null) && (includesToday != "") && (includesToday == true)) {
-                //check for current hour
+                //check if current time is within venue's start and end time
                 if (
                     (
                         (hourMinute < '2400') &&
@@ -117,7 +117,7 @@ function displayVenueDetailsByVenueId(result, data, venueName, hourMinute) {
                     )
                 ) {
                     //console.log("Open Now");
-                    let htmlOutput = `<section class="result ${result.categories[0].name} col-3">
+                    let htmlOutput = `<section role="region" class="result ${result.categories[0].name} col-3" aria-live="polite">
                         <h2 class="result-name">${result.name}</h2>
                         <div class="icon">
                         <img src="${result.categories[0].icon.prefix}bg_32${result.categories[0].icon.suffix}" alt="category-icon">
@@ -141,6 +141,7 @@ function displayVenueDetailsByVenueId(result, data, venueName, hourMinute) {
         }
     }
 }
+
 //Step 2: Use global variables, functions, and objects. (triggers)
 $(document).ready(function () {
     $('.start-section').show();
